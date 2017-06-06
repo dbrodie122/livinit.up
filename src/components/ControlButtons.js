@@ -6,7 +6,7 @@ const ControlButtons = (props) => {
       <button>Price</button>
       <button>Beds</button>
       <button>Sq. ft.</button>
-      </div>
+    </div>
   )
 };
 

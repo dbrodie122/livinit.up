@@ -6,7 +6,7 @@ import Listings from './components/Listings';
 import {__BATMAN_DATA__} from './data/batmanData';
 import {__SUPERMAN_DATA__} from './data/supermanData';
 import { connect } from 'react-redux';
-import { handleListingData } from './actions/actionCreators';
+import { handleListingData, updateFilterType } from './actions/actionCreators';
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class App extends Component {
     this.fetchListingData = this.fetchListingData.bind(this);
     this.standardizeBatmanData = this.standardizeBatmanData.bind(this);
     this.standardizeSupermanData = this.standardizeSupermanData.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
   }
 
   componentDidMount() {
@@ -39,12 +40,16 @@ class App extends Component {
   }
 
   standardizeSupermanData(supermanData) {
+    
+    const addCommas = (numStr) => {
+      return numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     const output = [];
 
     supermanData.items.forEach(listing => {
       const newListing = {};
       newListing.address = listing.address;
-      newListing.price = listing.price;
+      newListing.price = addCommas(listing.price);
       newListing.beds = listing.beds;
       newListing.baths = listing.baths;
       newListing.sqft = listing.sqft;
@@ -55,6 +60,10 @@ class App extends Component {
     })
     return output;
   }
+
+  updateFilter(type) {
+    this.props.updateFilterType(type);
+  };
 
   fetchListingData() {
     // The axios library has support across all browsers and could be used to hit our API endpoint
@@ -68,12 +77,13 @@ class App extends Component {
     this.props.handleListingData(supermanData);
 
   }
+
   render() {
     
     return (
       <div>
         <Header />
-        <ControlButtons />
+        <ControlButtons updateFilter={this.updateFilter}/>
         <Listings />
       </div>
     );
@@ -81,15 +91,27 @@ class App extends Component {
 }
 
 
+const filterListings = (listings, filter) => {
+
+};
+
 // const filterMessages = (messages, roomName) =>
 //   messages.filter(message => message.roomName === roomName);
 
+// filter for:
+  //price
+
+  //beds
+  //sqft
+
 const mapStateToProps = state => ({
-  listings: state.listings
+  listings: state.listings,
+  filter: state.filter
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleListingData: data => dispatch(handleListingData(data))
+  handleListingData: data => dispatch(handleListingData(data)),
+  updateFilterType: type => dispatch(updateFilterType(type))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

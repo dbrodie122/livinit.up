@@ -1,11 +1,14 @@
 import React from 'react';
 
 const ControlButtons = (props) => {
+  const handleBtnClick = (e) => {
+    props.updateFilter(e.target.value);
+  }
   return (
     <div>
-      <button>Price</button>
-      <button>Beds</button>
-      <button>Sq. ft.</button>
+      <button className="btn" value="price" onClick={handleBtnClick}>Price</button>
+      <button className="btn" value="beds" onClick={handleBtnClick}>Beds</button>
+      <button className="btn" value="sqft" onClick={handleBtnClick}>Sq. ft.</button>
     </div>
   )
 };

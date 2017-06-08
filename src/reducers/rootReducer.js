@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import batmanAPIreducer from './batmanAPIreducer';
-import supermanAPIreducer from './supermanAPIreducer';
+import listingDataReducer from './listingDataReducer';
 const rootReducer = combineReducers({
   //key : reducer
-  batmanAPI: batmanAPIreducer,
-  supermanAPI: supermanAPIreducer
+  listings: listingDataReducer
 });
 
 export default rootReducer;

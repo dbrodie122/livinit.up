@@ -92,20 +92,20 @@ class App extends Component {
 
 
 const filterListings = (listings, filter) => {
-
+  listings.sort((a,b) => a[filter] - b[filter]);
+  return listings;
 };
 
 // const filterMessages = (messages, roomName) =>
 //   messages.filter(message => message.roomName === roomName);
 
-// filter for:
-  //price
-
-  //beds
-  //sqft
+// filter for: (all are strings)
+  //price - numbers have commas, could be empty string
+  //beds - can have decimals, could be empty string
+  //sqft - can be null
 
 const mapStateToProps = state => ({
-  listings: state.listings,
+  listings: filterListings(state.listings, state.filter),
   filter: state.filter
 });
 

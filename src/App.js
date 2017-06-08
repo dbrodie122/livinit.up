@@ -91,10 +91,9 @@ class App extends Component {
 }
 
 
-const filterListings = (listings, filter) => {
-  listings.sort((a,b) => a[filter] - b[filter]);
-  return listings;
-};
+// const filterListings = (listings, filter) => {
+//   return listings.sort((a,b) => a[filter] - b[filter]);
+// };
 
 // const filterMessages = (messages, roomName) =>
 //   messages.filter(message => message.roomName === roomName);
@@ -105,7 +104,7 @@ const filterListings = (listings, filter) => {
   //sqft - can be null
 
 const mapStateToProps = state => ({
-  listings: filterListings(state.listings, state.filter),
+  listings: state.listings,
   filter: state.filter
 });
 

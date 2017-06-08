@@ -10,8 +10,13 @@ const Listings = (props) => {
   )
 };
 
+const filterListings = (listings, filter) => {
+  return listings.sort((a,b) => a[filter] - b[filter]);
+};
+
 const mapStateToProps = state =>({
-  listings: state.listings
+  listings: filterListings(state.listings, state.filter),
+  filter: state.filter
 });
 
 

@@ -5,6 +5,8 @@ import ControlButtons from './components/ControlButtons';
 import Listings from './components/Listings';
 import {__BATMAN_DATA__} from './data/batmanData';
 import {__SUPERMAN_DATA__} from './data/supermanData';
+import { connect } from 'react-redux';
+import { handleListingData } from './actions/actionCreators';
 
 class App extends Component {
   constructor(props) {
@@ -13,8 +15,9 @@ class App extends Component {
     this.standardizeBatmanData = this.standardizeBatmanData.bind(this);
     this.standardizeSupermanData = this.standardizeSupermanData.bind(this);
   }
+
   componentDidMount() {
-    console.log(axios);
+    this.fetchListingData();
   }
 
   standardizeBatmanData(batmanData) {
@@ -38,7 +41,7 @@ class App extends Component {
   standardizeSupermanData(supermanData) {
     const output = [];
 
-    superman.items.forEach(listing => {
+    supermanData.items.forEach(listing => {
       const newListing = {};
       newListing.address = listing.address;
       newListing.price = listing.price;
@@ -55,9 +58,15 @@ class App extends Component {
 
   fetchListingData() {
     // The axios library has support across all browsers and could be used to hit our API endpoint
-    axios.get('url/batman')
-    .then(batmandData => standardizeBatmanData(batmanData))
-    .then()
+    // axios.get('url').then(data => standardizeData())
+
+    //Instead, since we are importing dummy data, we will standardize it as if it had returned successfully.
+
+    const batmanData = this.standardizeBatmanData(__BATMAN_DATA__);
+    const supermanData = this.standardizeSupermanData(__SUPERMAN_DATA__);
+    this.props.handleListingData(batmanData);
+    this.props.handleListingData(supermanData);
+
   }
   render() {
     
@@ -71,4 +80,16 @@ class App extends Component {
   }
 }
 
-export default App;
+
+// const filterMessages = (messages, roomName) =>
+//   messages.filter(message => message.roomName === roomName);
+
+const mapStateToProps = state => ({
+  listings: state.listings
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleListingData: data => dispatch(handleListingData(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

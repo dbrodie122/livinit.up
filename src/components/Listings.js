@@ -1,13 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ListingTile from './ListingTile';
 
 const Listings = (props) => {
   return (
-    <div>
-      This will be a container for the listing tiles.
-      <ListingTile />
+    <div className="listing-container">
+      {props.listings.map(listing => <ListingTile key={listing.address + listing.url} listing={listing} />)}
     </div>
   )
 };
 
-export default Listings;
+const mapStateToProps = state =>({
+  listings: state.listings
+});
+
+
+export default connect(mapStateToProps, null)(Listings);

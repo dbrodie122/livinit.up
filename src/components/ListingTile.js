@@ -5,7 +5,9 @@ const ListingTile = (props) => {
   return (
     <div className="listing-box">
       <img src={listing.pic} alt={`Listing at ${listing.address}`}></img>
-      <div className="built">{listing.built ? 'Built in' : ''} {listing.built}</div>
+      {listing.built && (
+        <div className="built">{'Built in'} {listing.built}</div>
+      )}
       <h3 href={listing.url}>{listing.address}</h3>
       <h2>${listing.price}</h2>
       <div className="details">
@@ -19,3 +21,7 @@ const ListingTile = (props) => {
 };
 
 export default ListingTile;
+
+
+//wrap text content in div and use flexbox to manage sizes responsively
+// can handle long addresses with overflow elipses in css, check text link

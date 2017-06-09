@@ -5,7 +5,7 @@ export const handleListingData = data => ({
 
 export const updateFilterType = filter => ({
   type: 'UPDATE_FILTER_TYPE',
-  filter:`${filter}`
+  filter
 });
 
 // export const updateFilterToBeds = filter => ({

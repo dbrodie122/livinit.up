@@ -8,6 +8,7 @@ import {__SUPERMAN_DATA__} from './data/supermanData';
 import { connect } from 'react-redux';
 import { handleListingData, updateFilterType } from './actions/actionCreators';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -89,19 +90,6 @@ class App extends Component {
     );
   }
 }
-
-
-// const filterListings = (listings, filter) => {
-//   return listings.sort((a,b) => a[filter] - b[filter]);
-// };
-
-// const filterMessages = (messages, roomName) =>
-//   messages.filter(message => message.roomName === roomName);
-
-// filter for: (all are strings)
-  //price - numbers have commas, could be empty string
-  //beds - can have decimals, could be empty string
-  //sqft - can be null
 
 const mapStateToProps = state => ({
   listings: state.listings,

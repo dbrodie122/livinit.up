@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import listingDataReducer from './listingDataReducer';
+import listings from './listingDataReducer';
 import filterTypeReducer from './filterTypeReducer';
 const rootReducer = combineReducers({
   //key : reducer
-  listings: listingDataReducer,
+  listings,
   filter: filterTypeReducer
 });
 

@@ -16,18 +16,28 @@ class App extends Component {
     this.standardizeBatmanData = this.standardizeBatmanData.bind(this);
     this.standardizeSupermanData = this.standardizeSupermanData.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
+    this.separateStreetAndCityState = this.separateStreetAndCityState.bind(this);
   }
 
   componentDidMount() {
     this.fetchListingData();
   }
 
+  separateStreetAndCityState(fullAddress){
+    const addressParts = fullAddress.split(', ');
+    const street = addressParts.splice(0,1).toString();
+    const cityState = addressParts.join(', ');
+    return [street, cityState];
+  }
+
   standardizeBatmanData(batmanData) {
     const output = [];
 
     for(let key in batmanData) {
+      const address = this.separateStreetAndCityState(key)
       const newListing = {};
-      newListing.address = key;
+      newListing.street = address[0];
+      newListing.cityState = address[1];
       newListing.price = batmanData[key].cost;
       newListing.beds = batmanData[key].beds;
       newListing.baths = batmanData[key].baths;
@@ -48,8 +58,10 @@ class App extends Component {
     const output = [];
 
     supermanData.items.forEach(listing => {
+      const address = this.separateStreetAndCityState(listing.address);
       const newListing = {};
-      newListing.address = listing.address;
+      newListing.street = address[0];
+      newListing.cityState = address[1];
       newListing.price = addCommas(listing.price);
       newListing.beds = listing.beds;
       newListing.baths = listing.baths;

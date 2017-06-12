@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const clicked = {
+const active = {
   backgroundColor: '#1377E1',
   border: '2px solid #1377E1',
   outline: 'none'
@@ -13,9 +13,9 @@ const ControlButtons = (props) => {
   }
   return (
     <div>
-      <button style={props.filter === "price" ? clicked : {}} className="btn" onClick={handleBtnClick} value="price" >Price</button>
-      <button style={props.filter === "beds" ? clicked : {}} className="btn" onClick={handleBtnClick} value="beds" >Beds</button>
-      <button style={props.filter === "sqft" ? clicked : {}} className="btn" onClick={handleBtnClick} value="sqft" >Sq. ft.</button>
+      <button style={props.filter === "price" ? active : {}} className="btn" onClick={handleBtnClick} value="price" >Price</button>
+      <button style={props.filter === "beds" ? active : {}} className="btn" onClick={handleBtnClick} value="beds" >Beds</button>
+      <button style={props.filter === "sqft" ? active : {}} className="btn" onClick={handleBtnClick} value="sqft" >Sq. ft.</button>
     </div>
   )
 };

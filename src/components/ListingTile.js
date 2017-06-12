@@ -12,7 +12,7 @@ const ListingTile = (props) => {
         <p className="price">${listing.price}</p>
         <div className="details">
           <span> {listing.beds} beds </span>&bull;
-          <span> {listing.baths} baths </span>&bull;
+          <span> {listing.baths} {listing.baths <= 1 ? 'bath' : 'baths'} </span>&bull;
           <span> {listing.sqft ? `${listing.sqft} sq ft` : 'inquire'}</span>
         </div>
       </div>

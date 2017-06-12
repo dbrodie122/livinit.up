@@ -17,18 +17,18 @@ class App extends Component {
     this.standardizeSupermanData = this.standardizeSupermanData.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
     this.separateStreetAndCityState = this.separateStreetAndCityState.bind(this);
-  }
+  };
 
   componentDidMount() {
     this.fetchListingData();
-  }
+  };
 
   separateStreetAndCityState(fullAddress){
     const addressParts = fullAddress.split(', ');
     const street = addressParts.splice(0,1).toString();
     const cityState = addressParts.join(', ');
     return [street, cityState];
-  }
+  };
 
   standardizeBatmanData(batmanData) {
     const output = [];
@@ -48,13 +48,13 @@ class App extends Component {
       output.push(newListing);
     }
     return output;
-  }
+  };
 
   standardizeSupermanData(supermanData) {
     
     const addCommas = (numStr) => {
       return numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+    };
     const output = [];
 
     supermanData.items.forEach(listing => {
@@ -70,9 +70,9 @@ class App extends Component {
       newListing.pic = listing.thumb;
       newListing.url = listing.url;
       output.push(newListing);
-    })
+    });
     return output;
-  }
+  };
 
   updateFilter(type) {
     this.props.updateFilterType(type);
@@ -80,10 +80,12 @@ class App extends Component {
 
   fetchListingData() {
     // The axios library has support across all browsers and could be used to hit our API endpoint
-    // axios.get('url').then(data => standardizeData())
+    // Example pseudocode:
+    // axios.get('url')
+    //  .then(data => standardizeData(data))
+    //  .then(this.props.handleListingData(data))
 
-    //Instead, since we are importing dummy data, we will standardize it as if it had returned successfully.
-
+    //Instead, since we are importing dummy data, we will standardize it as if it had resolved successfully.
     const batmanData = this.standardizeBatmanData(__BATMAN_DATA__);
     const supermanData = this.standardizeSupermanData(__SUPERMAN_DATA__);
     this.props.handleListingData(batmanData);

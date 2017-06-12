@@ -40,9 +40,4 @@ const mapStateToProps = state =>({
   filter: state.filter
 });
 
-// filter for: (all are strings)
-  //price - numbers have commas, could be empty string
-  //beds - could be empty string
-  //sqft - can be null
-
 export default connect(mapStateToProps, null)(Listings);

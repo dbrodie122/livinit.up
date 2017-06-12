@@ -21,11 +21,3 @@ const ListingTile = (props) => {
 };
 
 export default ListingTile;
-
-
-//wrap text content in div and use flexbox to manage sizes responsively
-// can handle long addresses with overflow elipses in css, check text link
-
-        // {listing.built && (
-        //   <div className="built">{'Built in'} {listing.built}</div>
-        // )}

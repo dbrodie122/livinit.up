@@ -25,8 +25,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(ControlButtons);
-
-// needs access to the value in state.
-  // if the value in state is equal to the value of the event
-    // set the class to btn-active
-

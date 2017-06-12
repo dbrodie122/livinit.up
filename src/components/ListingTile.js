@@ -4,10 +4,8 @@ const ListingTile = (props) => {
   const listing = props.listing;
   return (
     <div className="listing-box">
-      <div>
+      <div className="listing-inner-box">
         <img src={listing.pic} alt={`Listing at ${listing.street}`}></img>
-      </div>
-      <div>
         <div className="built" style={listing.built ? {} : {visibility: 'hidden'}}>{'Built in'} {listing.built}</div>
         <p className="truncate address">{listing.street}</p>
         <p className="truncate address">{listing.cityState}</p>

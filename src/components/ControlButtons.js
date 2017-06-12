@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const data = {
   price: 'Price',
@@ -6,7 +7,8 @@ const data = {
   sqft: 'Sq. ft.'
 }
 
-const generateButtons = (handleBtnClick) => Object.keys(data).map((key) => <button key={key} className="btn" onClick={handleBtnClick} value={key}>{data[key]}</button>)
+
+const generateButtons = (handleBtnClick, filter) => Object.keys(data).map((key) => <button key={key} className={'btn'} onClick={handleBtnClick} value={key}>{data[key]}</button>)
 
 const ControlButtons = (props) => {
   const handleBtnClick = (e) => {
@@ -17,4 +19,16 @@ const ControlButtons = (props) => {
   )
 };
 
-export default ControlButtons;
+const mapStateToProps = state => ({
+  filter: state.filter
+});
+
+export default connect(mapStateToProps)(ControlButtons);
+
+// needs access to the value in state.
+  // if the value in state is equal to the value of the event
+    // set the class to btn-active
+
+    // <button className={'btn' + } onClick={handleBtnClick} value={price}>Price</button>
+    // <button className={'btn'} onClick={handleBtnClick} value={beds}>Beds</button>
+    // <button className={'btn'} onClick={handleBtnClick} value={sqft}>Sq. ft.</button>

@@ -94,7 +94,7 @@ class App extends Component {
   render() {
     
     return (
-      <div>
+      <div className="app-container">
         <Header />
         <ControlButtons updateFilter={this.updateFilter}/>
         <Listings />

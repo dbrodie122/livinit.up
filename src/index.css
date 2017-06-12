@@ -1,6 +1,13 @@
+/*=================
+
+General
+
+===================*/
+
 html {
   font-size: 1rem;
 }
+
 body {
   margin: 0;
   padding: 1%;
@@ -14,8 +21,61 @@ img {
   width: auto;
 }
 
-a {
-  text-decoration: none;
+/*=================
+
+Containers
+
+===================*/
+
+.app-container {
+  padding: 0 13% 7% 13%;
+}
+
+.listing-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.listing-box {
+  border: 1px solid #CCCCCC;
+  margin: 0.5%;
+  padding: 1%;
+  width: 45.86%;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+/*=================
+
+Buttons
+
+===================*/
+
+.btn {
+  background-color: #89D128;
+  border-radius: 5px;
+  border: 2px solid #89D128;
+  color: #FFFFFF;
+  margin-left: 0.5%;
+  width: 15.7%;
+  height: 2rem;
+}
+
+.btn-active {
+  background-color: #1377E1;
+  border: 2px solid #1377E1;
+}
+
+/*=================
+
+Content
+
+===================*/
+
+.title {
+  font-size: 1.5rem;
 }
 
 .price {
@@ -30,43 +90,9 @@ a {
   color: #1377E1;
 }
 
-.btn {
-  background-color: #89D128;
-  border-radius: 5px;
-  border: 2px solid #89D128;
-  color: #FFFFFF;
-  margin: 0.5%;
-  width: 13%;
-}
-
-.btn:active {
-  background-color: #1377E1;
-  border: 2px solid #1377E1;
-}
-
-.listing-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-.listing-box {
-  border: 1px solid #CCCCCC;
-  margin: 1%;
-  padding: 1%;
-  width: 45.86%;
-  flex: 0 1 auto;
-  align-self: auto;
-  /*position: relative;*/
-}
-
 .built {
   text-align: right;
   font-size: 0.5rem;
-/*  position: absolute;
-  top: 10px;
-  right: 10px;*/
 }
 
 .details {
@@ -77,6 +103,19 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/*=================
+
+Media Queries
+
+===================*/
+
+@media (max-width: 1000px) {
+  img {
+    float: none;
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -95,10 +134,7 @@ a {
   .listing-box {
     width: 95%;
   }
+  .btn {
+    width: 32%;
+  }
 }
-@media (max-width: 568px) {
-  
-}
-
-
-

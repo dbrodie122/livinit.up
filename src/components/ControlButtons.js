@@ -1,21 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const data = {
-  price: 'Price',
-  beds: 'Beds',
-  sqft: 'Sq. ft.'
+const clicked = {
+  backgroundColor: '#1377E1',
+  border: '2px solid #1377E1',
+  outline: 'none'
 }
-
-
-const generateButtons = (handleBtnClick, filter) => Object.keys(data).map((key) => <button key={key} className={'btn'} onClick={handleBtnClick} value={key}>{data[key]}</button>)
 
 const ControlButtons = (props) => {
   const handleBtnClick = (e) => {
     props.updateFilter(e.target.value);
   }
   return (
-    <div>{generateButtons(handleBtnClick)}</div>
+    <div>
+      <button style={props.filter === "price" ? clicked : {}} className="btn" onClick={handleBtnClick} value="price" >Price</button>
+      <button style={props.filter === "beds" ? clicked : {}} className="btn" onClick={handleBtnClick} value="beds" >Beds</button>
+      <button style={props.filter === "sqft" ? clicked : {}} className="btn" onClick={handleBtnClick} value="sqft" >Sq. ft.</button>
+    </div>
   )
 };
 
@@ -29,6 +30,3 @@ export default connect(mapStateToProps)(ControlButtons);
   // if the value in state is equal to the value of the event
     // set the class to btn-active
 
-    // <button className={'btn' + } onClick={handleBtnClick} value={price}>Price</button>
-    // <button className={'btn'} onClick={handleBtnClick} value={beds}>Beds</button>
-    // <button className={'btn'} onClick={handleBtnClick} value={sqft}>Sq. ft.</button>

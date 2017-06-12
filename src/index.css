@@ -21,6 +21,15 @@ img {
   width: auto;
 }
 
+.tile { 
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+} 
+
 /*=================
 
 Containers
@@ -46,6 +55,7 @@ Containers
   width: 45.86%;
   flex: 0 1 auto;
   align-self: auto;
+  position: relative;
 }
 
 /*=================
